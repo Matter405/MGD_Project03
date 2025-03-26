@@ -1,0 +1,61 @@
+.header {
+    font-size: 120px;
+    color: rgb(38, 1, 1);
+    -unity-font-style: bold;
+    -unity-text-align: upper-center;
+    top: auto;
+    bottom: auto;
+    margin-top: 300px;
+}
+
+.button {
+    font-size: 80px;
+    width: 660px;
+    height: 180px;
+    align-self: center;
+    align-content: auto;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    margin-top: 100px;
+    margin-right: 0;
+    margin-bottom: 0;
+    margin-left: 0;
+    -unity-background-image-tint-color: rgb(242, 168, 29);
+    color: rgb(38, 1, 1);
+    -unity-text-outline-color: rgba(0, 0, 0, 0);
+    background-color: rgba(236, 236, 236, 0.7);
+    -unity-font-definition: url("project://database/Assets/UI%20Toolkit/UnityThemes/UnityDefaultRuntimeTheme.tss?fileID=2230732570650464555&guid=ffc43a74f28874fd7936478d14e65bfd&type=3#NotInter-Regular");
+    -unity-font-style: bold;
+    justify-content: flex-start;
+}
+
+.button:hover {
+    scale: 1.1 1.1;
+    background-color: rgba(180, 180, 180, 0.7);
+    border-left-color: rgb(0, 0, 0);
+    border-right-color: rgb(0, 0, 0);
+    border-top-color: rgb(0, 0, 0);
+    border-bottom-color: rgb(0, 0, 0);
+    border-top-width: 4px;
+    border-right-width: 4px;
+    border-bottom-width: 4px;
+    border-left-width: 4px;
+    background-image: none;
+}
+
+.header2 {
+    color: rgb(242, 168, 29);
+    text-shadow: 6px 6px 0 rgb(0, 0, 0);
+    font-size: 60px;
+    -unity-text-align: upper-center;
+}
+
+.BodyText {
+    -unity-text-align: upper-center;
+    font-size: 35px;
+    -unity-font-style: normal;
+    color: rgb(242, 208, 189);
+    text-shadow: 4px 4px 0 rgb(0, 0, 0);
+}
