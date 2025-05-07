@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UIElements;
 using UnityEngine.SceneManagement;
 using Unity.VisualScripting;
+using System.Collections;
 
 public class MainMenuEvents : MonoBehaviour
 {
@@ -20,6 +21,7 @@ public class MainMenuEvents : MonoBehaviour
 
     private void Awake()
     {
+        _audioSource = gameObject.GetComponent<AudioSource>();
 
         _document = GetComponent<UIDocument>();
 
