@@ -3,7 +3,7 @@ using UnityEngine;
 public class GameController : MonoBehaviour
 {
     [Header("Game Data")]
-    [SerializeField] public float _setupWaitTime = 3f;
+    [SerializeField] public float _setupWaitTime = .2f;
 
     [Header("Dependencies")]
     [SerializeField] public Unit _playerUnitPrefab;

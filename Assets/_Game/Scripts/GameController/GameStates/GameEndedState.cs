@@ -23,8 +23,9 @@ public class GameEndedState : State
         Debug.Log("STATE: Ended State");
         _clickedThrough = false;
         Debug.Log("Listen for Player Inputs");
-        _controller.Input.TouchStarted += OnTouchPressed;
+        _controller.HUDController.SetupGame += OnGameReset;
         Debug.Log("Display Player HUD");
+        _controller.HUDController.OnGameOver();
     }
 
     public override void Exit()
@@ -46,8 +47,9 @@ public class GameEndedState : State
         // ClickedThrough State, reload level, change back to SetupState, etc.
     }
 
-    private void OnTouchPressed(Vector2 position)
+    private void OnGameReset()
     {
+        // Exit game by choosing any option on screen: retry, quit
         Debug.Log("Exit Lose State");
         _clickedThrough = true;
     }
