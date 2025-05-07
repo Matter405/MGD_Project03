@@ -11,7 +11,9 @@ public class GameHUDController : MonoBehaviour
 
     public event Action SetupGame;
     public event Action PauseGame;
-    public event Action ResumeGame;
+    public event Action PlayGame;
+    public event Action EndGame;
+
 
 
     private VisualElement _gameplayMenuVisualTree;
@@ -59,7 +61,7 @@ public class GameHUDController : MonoBehaviour
         //disable pause menu, enable game menu
         _pauseMenuVisualTree.style.display = DisplayStyle.None;
         _gameplayMenuVisualTree.style.display = DisplayStyle.Flex;
-        ResumeGame?.Invoke();
+        PlayGame?.Invoke();
     }
 
     private void OnPauseButtonClick(ClickEvent evt)

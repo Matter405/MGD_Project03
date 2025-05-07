@@ -1,7 +1,9 @@
 <engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <engine:Template name="GameplayMenuVisualTree" src="project://database/Assets/UI%20Toolkit/GameplayMenuVisualTree.uxml?fileID=9197481963319205126&amp;guid=a113678955bb9494dadac594dd341a76&amp;type=3#GameplayMenuVisualTree" />
     <engine:Template name="PauseMenuVisualTree" src="project://database/Assets/UI%20Toolkit/PauseMenuVisualTree.uxml?fileID=9197481963319205126&amp;guid=946f304f8c53148b7b2f797969ac697f&amp;type=3#PauseMenuVisualTree" />
-    <Style src="project://database/Assets/_Game/MainMenuSystem/UI/MainMenuStyle.uss?fileID=7433441132597879392&amp;guid=f2ab6f1d01e0e41bb8f5337744b43df6&amp;type=3#MainMenuStyle" />
+    <engine:Template name="GameOverMenuVisualTree" src="project://database/Assets/UI%20Toolkit/GameOverMenuVisualTree.uxml?fileID=9197481963319205126&amp;guid=22d5a3a666fcb48608c5b57ee98827d9&amp;type=3#GameOverMenuVisualTree" />
+    <Style src="project://database/Assets/_Game/UI/StyleSheets/MainMenuStyle.uss?fileID=7433441132597879392&amp;guid=f2ab6f1d01e0e41bb8f5337744b43df6&amp;type=3#MainMenuStyle" />
     <engine:Instance template="GameplayMenuVisualTree" name="GameplayMenuVisualTree" style="flex-grow: 1; display: none;" />
     <engine:Instance template="PauseMenuVisualTree" name="PauseMenuVisualTree" style="flex-grow: 1; display: none;" />
+    <engine:Instance template="GameOverMenuVisualTree" name="GameOverMenuVisualTree" style="display: none;" />
 </engine:UXML>

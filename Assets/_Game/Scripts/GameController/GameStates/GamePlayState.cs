@@ -8,6 +8,7 @@ public class GamePlayState : State
     private GameController _controller;
     private bool _isWon;
     private bool _isLost;
+    private bool _isPaused;
 
     // this is our 'constructor' , called when this state is created
     public GamePlayState (GameFSM StateMachine, GameController controller)
@@ -24,8 +25,10 @@ public class GamePlayState : State
         Debug.Log("STATE: Play State");
         _isWon = false;
         _isLost = false;
+        _isPaused = false;
         Debug.Log("Listen for Player Inputs");
-        //_controller.HUDController.
+        _controller.HUDController.PauseGame += OnGamePaused;
+        _controller.HUDController.EndGame += OnGameComplete;
         Debug.Log("Display Player HUD");
     }
 
@@ -53,6 +56,11 @@ public class GamePlayState : State
             _stateMachine.ChangeState(_stateMachine.EndedState);
             // Lose State, reload level, change back to SetupState, etc.
         }
+        else if (_isPaused)
+        {
+            _stateMachine.ChangeState(_stateMachine.PauseState);
+            // Enable Pause Menu, Disable Play Menu
+        }
     }
 
     private void OnGameComplete()
@@ -61,4 +69,9 @@ public class GamePlayState : State
         _isWon = true;
     }
 
+    private void OnGamePaused()
+    {
+        Debug.Log("Game Paused");
+        _isPaused = true;
+    }
 }
