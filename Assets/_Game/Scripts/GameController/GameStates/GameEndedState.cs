@@ -21,6 +21,7 @@ public class GameEndedState : State
         base.Enter();
 
         Debug.Log("STATE: Ended State");
+        Time.timeScale = 0f;
         _clickedThrough = false;
         Debug.Log("Listen for Player Inputs");
         _controller.HUDController.SetupGame += OnGameReset;
@@ -30,6 +31,7 @@ public class GameEndedState : State
 
     public override void Exit()
     {
+        Time.timeScale = 1f;
         base.Exit();
     }
 

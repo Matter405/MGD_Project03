@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class Unit : MonoBehaviour
@@ -10,6 +11,8 @@ public class Unit : MonoBehaviour
     [SerializeField] private Rigidbody2D _rb;
     [SerializeField] private InputHandler _input;
     private bool _isTouching;
+
+    public event Action PlayerDied;
 
     private void Start()
     {
@@ -36,6 +39,12 @@ public class Unit : MonoBehaviour
 
         targetRotation = Mathf.Clamp(targetRotation, _maxDownwardRotation, _maxForwardRotation);
         transform.rotation = Quaternion.Euler(0, 0, targetRotation);
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        Debug.Log("Collided with " + collision.gameObject.name);
+        PlayerDied?.Invoke();
     }
 
     private void OnTouchPerformed(Vector2 position)

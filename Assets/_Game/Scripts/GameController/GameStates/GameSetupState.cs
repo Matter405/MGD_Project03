@@ -7,8 +7,6 @@ public class GameSetupState : State
     private GameFSM _stateMachine;
     private GameController _controller;
 
-    public bool _isSetupComplete = false;
-
     // this is our 'constructor' , called when this state is created
     public GameSetupState(GameFSM stateMachine, GameController controller)
     {
@@ -22,8 +20,6 @@ public class GameSetupState : State
         base.Enter();
 
         Debug.Log("STATE: Game Setup");
-        _isSetupComplete = false;
-        _controller.HUDController.SetupGame += OnSetupComplete;
         Debug.Log("Load Save Data");
         Debug.Log("Spawn Units");
 
@@ -45,13 +41,7 @@ public class GameSetupState : State
     {
         base.Tick();
 
-        if (_isSetupComplete || StateDuration >= _controller.SetupWaitTime)
-            _stateMachine.ChangeState(_stateMachine.PlayState);
+        _stateMachine.ChangeState(_stateMachine.PlayState);
     }
 
-    private void OnSetupComplete()
-    {
-        // do anything needed for setup state to be complete for gameplay
-        _isSetupComplete = true;
-    }
 }

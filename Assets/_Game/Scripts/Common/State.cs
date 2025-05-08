@@ -4,7 +4,7 @@ using UnityEngine;
 
 public abstract class State
 {
-    public float StateDuration { get; private set; } = 0;
+    public float StateDuration { get; private set; } = 0.2f;
 
     // run once when state is Entered
     public virtual void Enter()

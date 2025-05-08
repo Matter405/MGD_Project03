@@ -11,6 +11,8 @@ public class GameController : MonoBehaviour
     [SerializeField] public UnitSpawner _unitSpawner;
     [SerializeField] public InputHandler _input;
     [SerializeField] public GameHUDController _hudController;
+    [SerializeField] public PipeSpawner _pipeSpawner;
+    [SerializeField] public Transform _pipeSpawnLocation;
 
     public float SetupWaitTime => _setupWaitTime;
 
@@ -19,4 +21,6 @@ public class GameController : MonoBehaviour
     public UnitSpawner UnitSpawner => _unitSpawner;
     public InputHandler Input => _input;
     public GameHUDController HUDController => _hudController;
+    public PipeSpawner PipeSpawner => _pipeSpawner;
+    public Transform PipeSpawnLocation => _pipeSpawnLocation;
 }

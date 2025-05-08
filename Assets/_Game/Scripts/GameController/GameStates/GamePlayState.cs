@@ -6,9 +6,8 @@ public class GamePlayState : State
 {
     private GameFSM _stateMachine;
     private GameController _controller;
-    private bool _isWon;
-    private bool _isLost;
     private bool _isPaused;
+    private bool _isDead;
 
     // this is our 'constructor' , called when this state is created
     public GamePlayState (GameFSM StateMachine, GameController controller)
@@ -23,12 +22,11 @@ public class GamePlayState : State
         base.Enter();
 
         Debug.Log("STATE: Play State");
-        _isWon = false;
-        _isLost = false;
         _isPaused = false;
+        _isDead = false;
         Debug.Log("Listen for Player Inputs");
         _controller.HUDController.PauseGame += OnGamePaused;
-        _controller.HUDController.EndGame += OnGameComplete;
+        _controller.PlayerUnitPrefab.PlayerDied += OnPlayerDeath;
         Debug.Log("Display Player HUD");
     }
 
@@ -49,9 +47,8 @@ public class GamePlayState : State
         base.Tick();
 
         // check for lose condition
-        if(StateDuration >= _controller.SetupWaitTime)
+        if(_isDead)
         {
-            _isLost = true;
             Debug.Log("You Lose!");
             _stateMachine.ChangeState(_stateMachine.EndedState);
             // Lose State, reload level, change back to SetupState, etc.
@@ -63,10 +60,10 @@ public class GamePlayState : State
         }
     }
 
-    private void OnGameComplete()
+    private void OnPlayerDeath()
     {
-        Debug.Log("You Win!");
-        _isWon = true;
+        Debug.Log("You Died!");
+        _isDead = true;
     }
 
     private void OnGamePaused()

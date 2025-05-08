@@ -112,6 +112,7 @@ public class GameHUDController : MonoBehaviour
         _pauseMenuVisualTree.style.display = DisplayStyle.None;
         _gameplayMenuVisualTree.style.display = DisplayStyle.None;
         _gameOverMenuVisualTree.style.display = DisplayStyle.Flex;
+        EndGame?.Invoke();
     }
 
     private void OnDisable()
