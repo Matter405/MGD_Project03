@@ -17,15 +17,19 @@ public class GamePauseState : State
 
         Debug.Log("STATE: Paused State");
         Time.timeScale = 0f;
+        SaveManager.Instance.Load();
         Debug.Log("Listen for Player Inputs");
         _controller.HUDController.PlayGame += OnGamePlay;
         Debug.Log("Display Player HUD");
+        _controller.HUDController.DisplayScores();
     }
 
     public override void Exit()
     {
-        base.Exit();
+        _controller.HUDController.SaveScores();
+        _controller.HUDController.PlayGame -= OnGamePlay;
         Time.timeScale = 1f;
+        base.Exit();
     }
 
     public override void FixedTick()

@@ -21,16 +21,20 @@ public class GameEndedState : State
         base.Enter();
 
         Debug.Log("STATE: Ended State");
+        SaveManager.Instance.Load();
         Time.timeScale = 0f;
         _clickedThrough = false;
         Debug.Log("Listen for Player Inputs");
         _controller.HUDController.SetupGame += OnGameReset;
         Debug.Log("Display Player HUD");
+        _controller.HUDController.DisplayScores();
         _controller.HUDController.OnGameOver();
     }
 
     public override void Exit()
     {
+        _controller.HUDController.SetupGame -= OnGameReset;
+        _controller.HUDController.SaveScores();
         Time.timeScale = 1f;
         base.Exit();
     }

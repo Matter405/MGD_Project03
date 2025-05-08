@@ -2,5 +2,11 @@
     <Style src="project://database/Assets/_Game/UI/StyleSheets/MainMenuStyle.uss?fileID=7433441132597879392&amp;guid=f2ab6f1d01e0e41bb8f5337744b43df6&amp;type=3#MainMenuStyle" />
     <engine:VisualElement style="flex-grow: 1;">
         <engine:Button text="Pause" name="PauseButton" class="button" style="align-self: flex-end; margin-left: 4px; margin-bottom: 2px; margin-right: 50px; width: 220px; height: 60px; font-size: 20px;" />
+        <engine:Label text="SCORE:" name="CurrentScoreLabel" class="header" style="margin-top: 2px; font-size: 60px; position: absolute; top: 169px; left: 207px; -unity-text-align: upper-center;">
+            <engine:Label text="0" name="CurrentValue" style="position: relative; top: 80px; font-size: 80px;" />
+        </engine:Label>
+        <engine:Label text="BEST:" name="HighScoreLabel" class="header" style="margin-top: 2px; font-size: 60px; position: absolute; top: 169px; left: 796px; -unity-text-align: upper-center;">
+            <engine:Label text="0" name="BestValue" style="position: relative; top: 80px; font-size: 80px;" />
+        </engine:Label>
     </engine:VisualElement>
 </engine:UXML>

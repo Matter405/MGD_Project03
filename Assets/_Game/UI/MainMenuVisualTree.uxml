@@ -2,9 +2,16 @@
     <Style src="project://database/Assets/_Game/UI/StyleSheets/MainMenuStyle.uss?fileID=7433441132597879392&amp;guid=f2ab6f1d01e0e41bb8f5337744b43df6&amp;type=3#MainMenuStyle" />
     <engine:VisualElement style="flex-grow: 1;">
         <engine:VisualElement name="RootMenu" style="flex-grow: 1; -unity-background-image-tint-color: rgb(255, 255, 255); background-color: rgba(0, 0, 0, 0); background-image: url(&quot;project://database/Assets/_Game/UI/Images/Landscape_v2.png?fileID=2800000&amp;guid=3e82473b3e00f40818f7d50e10e29ca8&amp;type=3#Landscape_v2&quot;);">
-            <engine:Label text="Main Menu" name="MainMenuLabel" class="header" />
+            <engine:Label text="Jumping Benny" name="MainMenuLabel" class="header" style="font-size: 110px; margin-top: 400px;" />
             <engine:Button text="Play" name="PlayMainMenuButton" class="button" />
+            <engine:Button text="Reset&#10;" name="ResetMainMenuButton" class="button" />
             <engine:Button text="Quit" name="QuitMainMenuButton" class="button" />
+            <engine:Label text="SCORE:" name="CurrentScoreLabel" class="header" style="margin-top: 2px; font-size: 60px; position: absolute; top: 169px; left: 207px; -unity-text-align: upper-center;">
+                <engine:Label text="0" name="CurrentValue" style="position: relative; top: 80px; font-size: 80px;" />
+            </engine:Label>
+            <engine:Label text="BEST:" name="HighScoreLabel" class="header" style="margin-top: 2px; font-size: 60px; position: absolute; top: 169px; left: 796px; -unity-text-align: upper-center;">
+                <engine:Label text="0" name="BestValue" style="position: relative; top: 80px; font-size: 80px;" />
+            </engine:Label>
         </engine:VisualElement>
     </engine:VisualElement>
 </engine:UXML>

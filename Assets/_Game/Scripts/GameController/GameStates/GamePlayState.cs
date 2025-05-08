@@ -28,12 +28,17 @@ public class GamePlayState : State
         _controller.HUDController.PauseGame += OnGamePaused;
         _controller.PlayerUnitPrefab.PlayerDied += OnPlayerDeath;
         Debug.Log("Display Player HUD");
+        _controller.HUDController.ResetCurrentScore();
+        _controller.HUDController.DisplayScores();
     }
 
     public override void Exit()
     {
         //Debug.Log("Unlisten for Player Inputs");
+        _controller.HUDController.PauseGame -= OnGamePaused;
+        _controller.PlayerUnitPrefab.PlayerDied -= OnPlayerDeath;
         //Debug.Log("Hide Player HUD");
+        _controller.HUDController.SaveScores();
         base.Exit();
     }
 

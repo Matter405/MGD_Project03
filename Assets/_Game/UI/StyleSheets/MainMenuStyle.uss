@@ -59,3 +59,13 @@
     color: rgb(242, 208, 189);
     text-shadow: 4px 4px 0 rgb(0, 0, 0);
 }
+
+.header {
+    font-size: 120px;
+    color: rgb(38, 1, 1);
+    -unity-font-style: bold;
+    -unity-text-align: upper-center;
+    top: auto;
+    bottom: auto;
+    margin-top: 300px;
+}

@@ -8,6 +8,8 @@ public class GameHUDController : MonoBehaviour
 {
     [SerializeField] private AudioClip _gameMenuMusic;
     private AudioSource _audioSource;
+    public int _currentScore { get; private set; }
+    public int _highScore { get; private set; }
 
     public event Action SetupGame;
     public event Action PauseGame;
@@ -17,6 +19,9 @@ public class GameHUDController : MonoBehaviour
     private VisualElement _gameplayMenuVisualTree;
     private VisualElement _pauseMenuVisualTree;
     private VisualElement _gameOverMenuVisualTree;
+
+    private Label _currentScoreValueLabel;
+    private Label _highScoreValueLabel;
 
     private Button _pauseButton;
     private Button _resumeButton;
@@ -29,12 +34,20 @@ public class GameHUDController : MonoBehaviour
     {
         MusicManager.Instance.Play(_gameMenuMusic, 3);
         _audioSource = GetComponent<AudioSource>();
+        SaveManager.Instance.Load();
+        _currentScore = SaveManager.Instance.ActiveSaveData.CurrentScore;
+        _highScore = SaveManager.Instance.ActiveSaveData.HighScore;
+
         //get the document and immediately get the root VE
         VisualElement root = GetComponent<UIDocument>().rootVisualElement;
         //get each menu, shorter syntax
         _gameplayMenuVisualTree = root.Q("GameplayMenuVisualTree");
         _pauseMenuVisualTree = root.Q("PauseMenuVisualTree");
         _gameOverMenuVisualTree = root.Q("GameOverMenuVisualTree");
+        //get each label and display
+        _currentScoreValueLabel = root.Q("CurrentValue") as Label;
+        _highScoreValueLabel = root.Q("BestValue") as Label;
+        DisplayScores();
         //get pause button and register
         _pauseButton = root.Q("PauseButton") as Button;
         _pauseButton.RegisterCallback<ClickEvent>(OnPauseButtonClick);
@@ -113,6 +126,31 @@ public class GameHUDController : MonoBehaviour
         _gameplayMenuVisualTree.style.display = DisplayStyle.None;
         _gameOverMenuVisualTree.style.display = DisplayStyle.Flex;
         EndGame?.Invoke();
+    }
+
+    public void DisplayScores()
+    {
+        _currentScoreValueLabel.text = _currentScore.ToString();
+        _highScoreValueLabel.text = _highScore.ToString();
+    }
+
+    public void IncreaseScores(int scoreIncrease)
+    {
+        _currentScore += scoreIncrease;
+        if (_currentScore > _highScore)
+            _highScore = _currentScore;
+    }
+
+    public void ResetCurrentScore()
+    {
+        _currentScore = 0;
+    }
+
+    public void SaveScores()
+    {
+        SaveManager.Instance.ActiveSaveData.CurrentScore = _currentScore;
+        SaveManager.Instance.ActiveSaveData.HighScore = _highScore;
+        SaveManager.Instance.Save();
     }
 
     private void OnDisable()

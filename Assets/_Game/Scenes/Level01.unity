@@ -573,6 +573,8 @@ MonoBehaviour:
   _hudController: {fileID: 288409672}
   _pipeSpawner: {fileID: 1527954497}
   _pipeSpawnLocation: {fileID: 2079649447}
+  _cloudSpawner: {fileID: 0}
+  _cloudSpawnLocation: {fileID: 0}
 --- !u!4 &706294610
 Transform:
   m_ObjectHideFlags: 0
@@ -590,6 +592,7 @@ Transform:
   - {fileID: 288409671}
   - {fileID: 1218919453}
   - {fileID: 1527954496}
+  - {fileID: 1913396120}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &805031839
@@ -1007,9 +1010,41 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maxTime: 3
-  _heightRange: 10
+  _heightRange: 9
   _pipe: {fileID: 2329140600710564990, guid: 51ce4a3d31d2a46afa47d9a447effad3, type: 3}
   _pipeSpawnLocation: {fileID: 2079649447}
+  _controller: {fileID: 0}
+--- !u!1 &1690532673
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1690532674}
+  m_Layer: 0
+  m_Name: CloudSpawnLocation
+  m_TagString: Untagged
+  m_Icon: {fileID: 4162164826716764455, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1690532674
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1690532673}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 32.47, y: 10.3, z: 17.3}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1913396120}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1708731891
 GameObject:
   m_ObjectHideFlags: 0
@@ -1267,10 +1302,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5556777985520164020, guid: b722565a8095640b4827a6190a7e2a49, type: 3}
-      propertyPath: m_CollisionDetection
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7339222341071397456, guid: b722565a8095640b4827a6190a7e2a49, type: 3}
       propertyPath: m_Name
       value: JumpingBenny
@@ -1280,6 +1311,55 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b722565a8095640b4827a6190a7e2a49, type: 3}
+--- !u!1 &1913396119
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1913396120}
+  - component: {fileID: 1913396121}
+  m_Layer: 0
+  m_Name: CloudSpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1913396120
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1913396119}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1690532674}
+  m_Father: {fileID: 706294610}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1913396121
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1913396119}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f70c91b2b7a984b6197f5b40fa12400f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _maxTime: 30
+  _heightRange: 30
+  _cloud: {fileID: 701907168667296802, guid: bf9f86cb5d56346e3a5a1d3b84589222, type: 3}
+  _cloudSpawnLocation: {fileID: 1690532674}
 --- !u!1 &2079649446
 GameObject:
   m_ObjectHideFlags: 0
@@ -1305,7 +1385,7 @@ Transform:
   m_GameObject: {fileID: 2079649446}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 14, y: 0, z: 0}
+  m_LocalPosition: {x: 14, y: 0, z: 1.6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
